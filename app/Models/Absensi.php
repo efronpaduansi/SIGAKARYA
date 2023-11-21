@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Karyawan;
+use App\Models\User;
 
 class Absensi extends Model
 {
@@ -14,6 +15,7 @@ class Absensi extends Model
 
     protected $fillable  = [
         'nik_karyawan',
+        'user_id',
         'tanggal',
         'masuk',
         'pulang',
@@ -22,9 +24,14 @@ class Absensi extends Model
         'sk_pulang'
     ];
 
-    public function belongsTo()
+    public function karyawan()
     {
         return $this->belongsTo(Karyawan::class, 'nik_karyawan', 'nik');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
 }

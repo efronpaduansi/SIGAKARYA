@@ -28,7 +28,7 @@
                             </li>
 
                             <li class="submenu-item">
-                                <a href="component-breadcrumb.html" class="submenu-link">Data Absensi</a>
+                                <a href="{{ route('absensi.index') }}" class="submenu-link">Data Absensi</a>
                             </li>
 
                         </ul>
@@ -57,30 +57,12 @@
                 </div>
             </li>
 
-            <li class="menu-item has-sub">
-                <a href="#" class="menu-link">
-                    <span><i class="bi bi-life-preserver"></i> Support</span>
+            <li class="menu-item {{ request()->is('home') ? 'active' : '' }}">
+                <a href="{{ url('/absensi-karyawan') }}" class="menu-link">
+                    <span><i class="fas fa-clock"></i> Absensi</span>
                 </a>
-                <div class="submenu">
-                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                    <div class="submenu-group-wrapper">
-                        <ul class="submenu-group">
-                            <li class="submenu-item">
-                                <a href="https://zuramai.github.io/mazer/docs" class="submenu-link">Documentation</a>
-                            </li>
-
-                            <li class="submenu-item">
-                                <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md"
-                                    class="submenu-link">Contribute</a>
-                            </li>
-
-                            <li class="submenu-item">
-                                <a href="https://github.com/zuramai/mazer#donation" class="submenu-link">Donate</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </li>
+
         </ul>
     </div>
 </nav>
