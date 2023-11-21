@@ -16,8 +16,8 @@
                             <div class="form-group">
                                 <label for="editKode">Kode <small class="text-danger">*</small></label>
                                 <input type="text" name="editKode" id="editKode" class="form-control"
-                                    placeholder="Masukan Kode" value="{{ $item->kode }}" required
-                                    data-parsley-maxlength="25">
+                                    value="{{ $item->kode }}" required
+                                    readonly>
                             </div>
                         </div>
                         <div class="col-md-6">

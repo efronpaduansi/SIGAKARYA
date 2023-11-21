@@ -10,11 +10,21 @@ Use Alert;
 class JabatanController extends Controller
 {
 
+    private function generateJabatanNumber()
+    {
+        $lastKode = Jabatan::max('kode') ?? 0;
+        $nextId = $lastKode + 0001;
+
+        return str_pad($nextId, 4, '0', STR_PAD_LEFT);
+    }
+
+
     public function index()
     {
         $data['jabatan'] = Jabatan::query()
                         ->orderBy('kode', 'asc')
                         ->get();
+        $data['lastKode'] = $this->generateJabatanNumber();
 
         return view('adminpanel.pages.jabatan.manage', ['data' => $data]);
     }
