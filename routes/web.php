@@ -65,3 +65,10 @@ Route::middleware(['auth'])->group(function (){
       Route::post('/absensi-karyawan', 'store');
    });
 });
+
+Route::middleware(['auth'])->group(function (){
+   Route::controller(\App\Http\Controllers\ProfileController::class)->group(function (){
+     Route::get('/profile', 'index')->name('profile.index');
+     Route::put('/profile/{id}', 'passwordUpdate')->name('profile.passwordUpdate');
+   });
+});

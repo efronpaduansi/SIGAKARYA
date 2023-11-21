@@ -21,7 +21,7 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profil</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile.index') }}"><i class="bi bi-person"></i> Profil</a></li>
                     <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Pengaturan</a></li>
                     <li>
                         <hr class="dropdown-divider" />
