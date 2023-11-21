@@ -13,6 +13,19 @@ class AbsensiRecordController extends Controller
     public function index()
     {
         $data['karyawan'] = Karyawan::latest('nama')->get();
+        $data['record'] = Absensi::where('user_id', auth()->user()->id)
+                        ->where('tanggal', date('Y-m-d'))
+                        ->latest()
+                        ->first();
+
+        if(!$data['record']){
+            $data['keterangan'] = 'Anda belum melakukan rekam absensi!';
+            $data['recordId'] = null;
+        }else{
+            $jamMasuk = $data['record']['masuk'];
+            $data['keterangan'] = 'Anda telah melakukan check-in pada: ' . $jamMasuk;
+            $data['recordId'] = $data['record']['id'];
+        }
 
         return view('adminpanel.pages.absensi_record', ['data' => $data]);
     }
@@ -27,12 +40,20 @@ class AbsensiRecordController extends Controller
 
         $jenisAbsensi = $request->jenis_absensi;
 
+        if($jenisAbsensi === 'masuk'){
+            $data['masuk'] = now();
+            $storeData = Absensi::create($data);
+            if(!$storeData){
+                return back()->withToastError('Gagal merekam!');
+            }
 
-        $jenisAbsensi === 'masuk' ? $data['masuk'] = now() : $data['pulang'] = now();
+        }elseif($jenisAbsensi == 'pulang'){
+            $recordId = $request->recordId;
+            $updateData = Absensi::where('id', $recordId)->update(array('pulang' => now()));
 
-        $storeData = Absensi::create($data);
-        if(!$storeData){
-            return back()->withToastError('Gagal merekam!');
+            if(!$updateData){
+                return back()->withToastError('Gagal merekam!');
+            }
         }
 
         return back()->withToastSuccess('Berhasil merekam!');

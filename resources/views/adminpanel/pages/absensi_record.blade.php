@@ -16,6 +16,8 @@
                     <h3 class="text-center">Selamat datang, {{ Auth::user()->name }}</h3>
                     <p class="text-center">Silahkan tekan tombol dibawah ini untuk check-in atau check-out!</p>
                     <a href="#" class="btn btn-success text-center my-5" data-bs-toggle="modal" data-bs-target="#absensiModal"><i class="fas fa-clock"></i> Absen</a>
+                    <br>
+                    <strong class="text-center text-primary my-3">{{ $data['keterangan'] }}</strong>
                 </div>
             </div>
         </div>
@@ -33,6 +35,7 @@
                     <form action="{{ url('/absensi-karyawan') }}" method="POST">
                         @csrf
                         @method('POST')
+                        <input type="hidden" value="{{ $data['recordId'] }}" name="recordId">
                         <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
                         <div class="row">
                             <div class="col-md-6">
