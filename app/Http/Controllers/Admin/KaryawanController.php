@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Jabatan;
 use App\Models\Karyawan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Alert;
+use Illuminate\Support\Facades\Hash;
 use PDF;
 
 class KaryawanController extends Controller
@@ -44,6 +46,7 @@ class KaryawanController extends Controller
             'tahun_masuk' => trim(htmlspecialchars($request->addTahunMasuk)),
             'agama' => trim(htmlspecialchars($request->addAgama)),
             'telepon' => trim(htmlspecialchars($request->addTelepon)),
+            'email' => trim($request->addEmail),
             'rekening' => trim(htmlspecialchars($request->addRekening)),
             'nama_rekening' => trim(htmlspecialchars($request->addNamaRekening)),
             'alamat' => trim(htmlspecialchars($request->addAlamat)),
@@ -55,6 +58,13 @@ class KaryawanController extends Controller
         if(!$storeKaryawan){
             return redirect('/karyawan')->withToastError('Simpan gagal!');
         }
+        //Create new user from karyawan form
+        $createNewUser = User::create([
+            'name' => trim(htmlspecialchars($request->addNama)),
+            'email' => trim($request->addEmail),
+            'password' => Hash::make('password'),
+            'role' => 'karyawan',
+        ]);
 
         return redirect('/karyawan')->withToastSuccess('Simpan sukses!');
 
@@ -121,12 +131,13 @@ class KaryawanController extends Controller
             'tahun_masuk' => trim(htmlspecialchars($request->editTahunMasuk)),
             'agama' => trim(htmlspecialchars($request->editAgama)),
             'telepon' => trim(htmlspecialchars($request->editTelepon)),
+            'email' => trim($request->editEmail),
             'rekening' => trim(htmlspecialchars($request->editRekening)),
             'nama_rekening' => trim(htmlspecialchars($request->editNamaRekening)),
             'alamat' => trim(htmlspecialchars($request->editAlamat)),
             'kode_jabatan' => trim(htmlspecialchars($request->editJabatan)),
         ];
-        
+
         $updateKaryawan = Karyawan::where('nik', $nik)->update($data);
 
         if(!$updateKaryawan){
@@ -150,7 +161,7 @@ class KaryawanController extends Controller
         if(!$deleteKaryawan){
             return redirect()->back()->withToastError('Hapus gagal!');
         }
-        
+
         return redirect('/karyawan')->withToastSuccess('Hapus berhasil!');
     }
 

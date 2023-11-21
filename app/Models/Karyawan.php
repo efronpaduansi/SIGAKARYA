@@ -33,6 +33,7 @@ class Karyawan extends Model
         'tahun_masuk',
         'agama',
         'telepon',
+        'email',
         'rekening',
         'nama_rekening',
         'alamat',

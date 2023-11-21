@@ -80,21 +80,27 @@
 
                         <div class="row mb-2">
                             <strong class="mb-2">Informasi Kontak & Jabatan</strong>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="addTelepon">No. Telepon <small class="text-danger">*</small></label>
                                     <input type="text" name="addTelepon" id="addTelepon" class="form-control"
                                         placeholder="Masukan No Telepon" required data-parsley-maxlength="15">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="addEmail">Email <small class="text-danger">*</small></label>
+                                    <input type="email" name="addEmail" id="addEmail" class="form-control" required placeholder="Masukan Email Aktif">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="addRekening">No Rekening <small class="text-danger">*</small></label>
                                     <input type="text" name="addRekening" id="addRekening" class="form-control"
                                         placeholder="Masukan No Rekening" required data-parsley-maxlength="20">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="addNamaRekening">Nama Pemilik Rekening <small
                                             class="text-danger">*</small></label>

@@ -13,8 +13,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ url('/pinjaman/tambah') }}" class="btn btn-primary mb-5"><i class="fas fa-plus"></i> Ajukan
+                        @if(Auth::user()->role === 'karyawan')
+                            <a href="{{ url('/pinjaman/tambah') }}" class="btn btn-primary mb-5"><i class="fas fa-plus"></i> Ajukan
                             Pinjaman</a>
+                        @endif
                         <div class="table-responsive">
                             <table class="table table-striped table-hover" id="mytable">
                                 <thead>
