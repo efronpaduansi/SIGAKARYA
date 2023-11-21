@@ -62,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(UserController::class)->group(function (){
         Route::get('/users', 'index')->name('users.index');
         Route::post('/users', 'store')->name('users.store');
-
+        Route::delete('users/{id}', 'destroy')->name('users.destroy');
     });
 
 });

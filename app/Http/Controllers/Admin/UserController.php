@@ -35,4 +35,15 @@ class UserController extends Controller
         return back()->withToastSuccess('Simpan berhasil');
     }
 
+    public function destroy($id)
+    {
+        $deleteUserData = User::where('id', $id)->delete();
+
+        if(!$deleteUserData){
+            return back()->withToastError('Hapus gagal!');
+        }
+
+        return back()->withToastSuccess('Hapus berhasil!');
+    }
+
 }

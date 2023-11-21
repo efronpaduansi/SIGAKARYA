@@ -23,6 +23,7 @@
                             <th>Email</th>
                             <th>Peran</th>
                             <th>Tgl Gabung</th>
+                            <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -33,6 +34,15 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->role }}</td>
                                     <td>{{ $user->created_at->diffForHumans() }}</td>
+                                    <td>
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

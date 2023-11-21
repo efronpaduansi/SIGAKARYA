@@ -37,7 +37,7 @@
             </li>
 
 
-            <li class="menu-item has-sub">
+            <li class="menu-item has-sub  {{ request()->is('users') ? 'active' : '' }}">
                 <a href="#" class="menu-link">
                     <span><i class="bi bi-file-earmark-medical-fill"></i>
                         File Aksi</span>
