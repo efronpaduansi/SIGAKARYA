@@ -47,11 +47,11 @@
                     <div class="submenu-group-wrapper">
                         <ul class="submenu-group">
                             <li class="submenu-item">
-                                <a href="form-layout.html" class="submenu-link">Tambah User</a>
+                                <a href="{{ route('users.index') }}" class="submenu-link">User Manajemen</a>
                             </li>
-                            <li class="submenu-item">
-                                <a href="form-layout.html" class="submenu-link">Reset Password</a>
-                            </li>
+{{--                            <li class="submenu-item">--}}
+{{--                                <a href="form-layout.html" class="submenu-link">Reset Password</a>--}}
+{{--                            </li>--}}
                         </ul>
                     </div>
                 </div>

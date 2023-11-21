@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\KaryawanController;
 use App\Http\Controllers\Admin\PinjamanController;
+use App\Http\Controllers\Admin\UserController;
 
 
 /** Authentication */
@@ -57,6 +58,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/absensi', 'index')->name('absensi.index');
         Route::delete('/absensi/{id}', 'destroy')->name('absensi.destroy');
     });
+
+    Route::controller(UserController::class)->group(function (){
+        Route::get('/users', 'index')->name('users.index');
+        Route::post('/users', 'store')->name('users.store');
+
+    });
+
 });
 
 Route::middleware(['auth'])->group(function (){
