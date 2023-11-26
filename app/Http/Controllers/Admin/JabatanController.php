@@ -24,7 +24,6 @@ class JabatanController extends Controller
         $data['jabatan'] = Jabatan::query()
                         ->orderBy('kode', 'asc')
                         ->get();
-        $data['lastKode'] = $this->generateJabatanNumber();
 
         return view('adminpanel.pages.jabatan.manage', ['data' => $data]);
     }
@@ -39,7 +38,7 @@ class JabatanController extends Controller
         }
 
         $data = [
-            'kode' => trim(htmlspecialchars($request->addKode)),
+            'kode' => $this->generateJabatanNumber(),
             'nama' => trim(htmlspecialchars($request->addNama)),
             'gaji_pokok' => trim(htmlspecialchars(preg_replace('/[Rp.,]/', '', $request->addGapok))),
             'uang_makan' => trim(htmlspecialchars(preg_replace('/[Rp.,]/', '', $request->addUangMakan))),
