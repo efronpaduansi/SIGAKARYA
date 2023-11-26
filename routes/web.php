@@ -67,11 +67,17 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+// Route only for karyawan
 Route::middleware(['auth'])->group(function (){
    Route::controller(\App\Http\Controllers\AbsensiRecordController::class)->group(function (){
       Route::get('/absensi-karyawan', 'index');
       Route::post('/absensi-karyawan', 'store');
    });
+
+   Route::controller(\App\Http\Controllers\TimesheetController::class)->group(function(){
+      Route::get('/timesheet', 'index');
+   });
+
 });
 
 Route::middleware(['auth'])->group(function (){

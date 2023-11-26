@@ -69,6 +69,12 @@
                 </a>
             </li>
 
+            <li class="menu-item {{ request()->is('home') ? 'active' : '' }}">
+                <a href="{{ url('/absensi-karyawan') }}" class="menu-link">
+                    <span><i class="fas fa-business-time"></i> Leave & Cuti</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
