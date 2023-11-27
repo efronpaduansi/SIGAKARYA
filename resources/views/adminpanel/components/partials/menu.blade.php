@@ -16,7 +16,7 @@
                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
                     <div class="submenu-group-wrapper">
                         <ul class="submenu-group">
-                            @if (Auth::user()->role === 'admin' || Auth::user()->role === 'bendahara') 
+                            @if (Auth::user()->role === 'admin' || Auth::user()->role === 'bendahara')
                                 <li class="submenu-item">
                                     <a href="{{ route('karyawan.index') }}" class="submenu-link">Data Karyawan</a>
                                 </li>
@@ -69,8 +69,8 @@
                 </a>
             </li>
 
-            <li class="menu-item {{ request()->is('home') ? 'active' : '' }}">
-                <a href="{{ url('/absensi-karyawan') }}" class="menu-link">
+            <li class="menu-item {{ request()->is('timesheet') ? 'active' : '' }}">
+                <a href="{{ url('/timesheet') }}" class="menu-link">
                     <span><i class="fas fa-business-time"></i> Leave & Cuti</span>
                 </a>
             </li>

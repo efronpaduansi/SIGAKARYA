@@ -74,8 +74,8 @@ Route::middleware(['auth'])->group(function (){
       Route::post('/absensi-karyawan', 'store');
    });
 
-   Route::controller(\App\Http\Controllers\TimesheetController::class)->group(function(){
-      Route::get('/timesheet', 'index');
+   Route::controller(\App\Http\Controllers\TimesheetRecordController::class)->group(function(){
+      Route::get('/timesheet', 'index')->name('timesheet.index');
    });
 
 });
