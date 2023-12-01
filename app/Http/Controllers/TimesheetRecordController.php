@@ -61,4 +61,30 @@ class TimesheetRecordController extends Controller
     //     return Response::download($filePath);
     // }
 
+    public function doAccepted($id)
+    {
+        $data = Timesheet::find($id);
+
+        if($data->status == 'Menunggu Konfirmasi'){
+            $status = 'Disetujui';
+
+            $updateStatus = Timesheet::where('id', $id)->update(array('status' => $status));
+
+            return back()->withToastSuccess('Timesheet berhasil diupdate!');
+
+        }
+    }
+
+    public function doRejected($id)
+    {
+        $data = Timesheet::find($id);
+        if($data->status == 'Menunggu Konfirmasi'){
+            $status = 'Ditolak';
+            $updateStatus =  Timesheet::where('id', $id)->update(array('status'=> $status));
+
+            return back()->withToastSuccess('Timesheet ditolak!');
+
+        }
+    }
+
 }

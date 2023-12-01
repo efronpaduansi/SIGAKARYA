@@ -22,7 +22,7 @@
                                 <th>Subjek</th>
                                 <th>Jumlah Hari</th>
                                 <th>Keterangan</th>
-                                <th>Aksi</th>
+                                <th>Opsi</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -61,16 +61,20 @@
                         </tr>
                     </table>
                 </div>
-                <div class="d-flex justify-content-center">
-                     <form action="" >
-                        <button type="submit" class="btn btn-danger me-2">Tolak</button>
-                     </form>
 
-                     <form action="" >
-                        <button type="submit" class="btn btn-success">Setujui</button>
-                     </form>
+                @if ($data->status === 'Menunggu Konfirmasi')
+                    <div class="d-flex justify-content-center">
+                        <form action="{{ route('timesheet.doRejected', $data->id) }}" method="post" >
+                            @csrf
+                            <button type="submit" class="btn btn-danger me-2">Tolak</button>
+                        </form>
 
-                </div>
+                        <form action="{{ route('timesheet.doAccepted', $data->id) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-success">Setujui</button>
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
