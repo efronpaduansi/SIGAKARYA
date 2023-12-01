@@ -54,4 +54,11 @@ class TimesheetRecordController extends Controller
         return view('adminpanel.pages.timesheet.show', ['data'=> $data]);
     }
 
+    // public function downloadUploadedFiles($filename)
+    // {
+    //     $filePath = public_path('uploads/' . $fileName);
+
+    //     return Response::download($filePath);
+    // }
+
 }

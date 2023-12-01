@@ -78,6 +78,8 @@ Route::middleware(['auth'])->group(function (){
       Route::get('/timesheet', 'index')->name('timesheet.index');
       Route::post('/timesheet', 'store')->name('timesheet.store');
       Route::get('/timesheet/{id}', 'show')->name('timesheet.show');
+      Route::get('/timesheet/{fileName}', 'downloadUploadedFiles')->name('timesheet.downloadFileName');
+
    });
 
 });
