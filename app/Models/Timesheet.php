@@ -19,7 +19,8 @@ class Timesheet extends Model
         'dari_tgl',
         'sampai_tgl',
         'keterangan',
-        'file_lampiran'
+        'file_lampiran',
+        'status'
     ];
 
     public function karyawan()

@@ -14,7 +14,7 @@ class TimesheetRecordController extends Controller
         $data['karyawan'] = Karyawan::query()->oldest('nama')->get();
         $data['timesheets'] = Timesheet::latest()->get();
 
-        return view('adminpanel.pages.timesheet', ['data' => $data]);
+        return view('adminpanel.pages.timesheet.timesheet', ['data' => $data]);
     }
 
     public function store(Request $request)
@@ -47,4 +47,11 @@ class TimesheetRecordController extends Controller
         return back()->withToastSuccess('Simpan berhasil');
 
     }
+
+    public function show($id)
+    {
+        $data = Timesheet::find($id);
+        return view('adminpanel.pages.timesheet.show', ['data'=> $data]);
+    }
+
 }

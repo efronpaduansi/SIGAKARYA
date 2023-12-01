@@ -77,7 +77,7 @@ Route::middleware(['auth'])->group(function (){
    Route::controller(\App\Http\Controllers\TimesheetRecordController::class)->group(function(){
       Route::get('/timesheet', 'index')->name('timesheet.index');
       Route::post('/timesheet', 'store')->name('timesheet.store');
-
+      Route::get('/timesheet/{id}', 'show')->name('timesheet.show');
    });
 
 });

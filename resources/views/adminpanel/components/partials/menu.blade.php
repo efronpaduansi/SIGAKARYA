@@ -69,7 +69,7 @@
                 </a>
             </li>
 
-            <li class="menu-item {{ request()->is('timesheet') ? 'active' : '' }}">
+            <li class="menu-item {{ request()->is('timesheet/*') ? 'active' : '' }}">
                 <a href="{{ url('/timesheet') }}" class="menu-link">
                     <span><i class="fas fa-business-time"></i> Leave & Cuti</span>
                 </a>

@@ -34,7 +34,7 @@
                                     <td>{{ $item->jumlah_hari }}</td>
                                     <td>{{ $item->keterangan }}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                                        <a href="{{ route('timesheet.show', $item->id) }}" class="btn btn-sm btn-info">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach
