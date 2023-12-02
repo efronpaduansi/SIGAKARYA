@@ -21,9 +21,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function () {
-        return view('adminpanel.pages.dashboard');
-    });
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::controller(KaryawanController::class)->group(function(){
         Route::get('/karyawan', 'index')->name('karyawan.index');
