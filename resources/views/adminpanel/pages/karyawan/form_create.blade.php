@@ -108,14 +108,43 @@
                                         placeholder="Masukan Nama Pemilik Rekening" required>
                                 </div>
                             </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="addPendidikan">Pendidikan Terakhir <small class="text-danger">*</small></label>
+                                    <select name="addPendidikan" id="addPendidikan" class="form-select choices">
+                                        <option value="SD Sederajat">SD Sederajat</option>
+                                        <option value="SMP Sederajat">SMP Sederajat</option>
+                                        <option value="SMA Sederajat">SMA Sederajat</option>
+                                        <option value="Diploma III">Diploma III</option>
+                                        <option value="S1">S1</option>
+                                        <option value="S2">S2</option>
+                                        <option value="S3">S3</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="addNPWP">NPWP <small class="text-danger">*</small></label>
+                                    <input type="number" name="addNPWP" id="NPWP" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="addStatusPernikahan">Status Perkawinan <small class="text-danger">*</small></label>
+                                    <select name="addStatusPernikahan" id="addStatusPernikahan" class="form-select choices">
+                                        <option value="Kawin">Kawin</option>
+                                        <option value="Belum Kawin">Belum Kawin</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="addTahunMasuk">Tahun Masuk <small class="text-danger">*</small></label>
-                                    <select name="addTahunMasuk" id="addTahunMasuk" class="form-select choices">
-                                        @for ($tahun = date('Y'); $tahun >= 2000; $tahun--)
-                                            <option value="{{ $tahun }}">{{ $tahun }}</option>
-                                        @endfor
-                                    </select>
+                                    <input type="date" name="addTahunMasuk" id="addTahunMasuk" class="form-control">
                                 </div>
                             </div>
 

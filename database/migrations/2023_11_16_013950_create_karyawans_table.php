@@ -18,12 +18,15 @@ return new class extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['Pria', 'Wanita', 'Lainnya']);
-            $table->integer('tahun_masuk');
+            $table->date('tahun_masuk');
             $table->enum('agama', ['Islam', 'Kristen', 'Hindu', 'Budha', 'Lainnya']);
             $table->string('telepon');
             $table->string('rekening');
             $table->string('nama_rekening');
             $table->string('alamat');
+            $table->string('pendidikan_terakhir');
+            $table->string('npwp');
+            $table->enum('status_pernikahan', ['Kawin', 'Belum Kawin'])->default('Belum Kawin');
             $table->timestamps();
         });
     }

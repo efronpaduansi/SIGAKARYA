@@ -18,12 +18,13 @@
                         <ul class="submenu-group">
                             @if (Auth::user()->role === 'admin' || Auth::user()->role === 'bendahara')
                                 <li class="submenu-item">
-                                    <a href="{{ route('karyawan.index') }}" class="submenu-link">Data Karyawan</a>
+                                    <a href="{{ route('jabatan.index') }}" class="submenu-link">Data Jabatan</a>
                                 </li>
 
                                 <li class="submenu-item">
-                                    <a href="{{ route('jabatan.index') }}" class="submenu-link">Data Jabatan</a>
+                                    <a href="{{ route('karyawan.index') }}" class="submenu-link">Data Karyawan</a>
                                 </li>
+
                             @endif
 
                             <li class="submenu-item">
