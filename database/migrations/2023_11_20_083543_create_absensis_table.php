@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('nik_karyawan');
             $table->date('tanggal');
-            $table->time('masuk');
-            $table->time('pulang')->nullable();
+            $table->boolean('keterangan')->default(0);
             $table->integer('telat')->nullable();
             $table->string('sk_masuk')->nullable();
             $table->string('sk_pulang')->nullable();

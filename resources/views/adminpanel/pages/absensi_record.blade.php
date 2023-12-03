@@ -50,10 +50,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="jenis_absensi">Jenis Absensi <small class="text-danger">*</small></label>
-                                    <select name="jenis_absensi" id="jenis_absensi" class="form-select" required>
-                                        <option value="masuk">Masuk</option>
-                                        <option value="pulang">Pulang</option>
+                                    <label for="keterangan">Keterangan <small class="text-danger">*</small></label>
+                                    <select name="keterangan" id="keterangan" class="form-select" required>
+                                        <option value="1">Hadir</option>
+                                        <option value="0">Tidak Hadir</option>
                                     </select>
                                 </div>
                             </div>

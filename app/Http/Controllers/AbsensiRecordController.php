@@ -36,24 +36,13 @@ class AbsensiRecordController extends Controller
             'nik_karyawan' => trim(htmlspecialchars($request->nik_karyawan)),
             'user_id' => trim(htmlspecialchars(intval($request->user_id))),
             'tanggal' => now(),
+            'keterangan' => $request->keterangan,
         ];
 
-        $jenisAbsensi = $request->jenis_absensi;
+        $saveData = Absensi::create($data);
 
-        if($jenisAbsensi === 'masuk'){
-            $data['masuk'] = now();
-            $storeData = Absensi::create($data);
-            if(!$storeData){
-                return back()->withToastError('Gagal merekam!');
-            }
-
-        }elseif($jenisAbsensi == 'pulang'){
-            $recordId = $request->recordId;
-            $updateData = Absensi::where('id', $recordId)->update(array('pulang' => now()));
-
-            if(!$updateData){
-                return back()->withToastError('Gagal merekam!');
-            }
+        if(!$saveData){
+            return back()->withToastError('Gagal merekam. Silahkan coba lagi!');
         }
 
         return back()->withToastSuccess('Berhasil merekam!');

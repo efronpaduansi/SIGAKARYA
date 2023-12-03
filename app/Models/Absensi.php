@@ -17,8 +17,7 @@ class Absensi extends Model
         'nik_karyawan',
         'user_id',
         'tanggal',
-        'masuk',
-        'pulang',
+        'keterangan',
         'telat',
         'sk_masuk',
         'sk_pulang'

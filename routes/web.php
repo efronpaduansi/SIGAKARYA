@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::controller(\App\Http\Controllers\Admin\AbsensiController::class)->group(function (){
-        Route::get('/absensi', 'index')->name('absensi.index');
+        Route::get('/absensi', 'index')->name('data.absensi.index');
         Route::delete('/absensi/{id}', 'destroy')->name('absensi.destroy');
     });
 
@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
 // Route only for karyawan
 Route::middleware(['auth'])->group(function (){
    Route::controller(\App\Http\Controllers\AbsensiRecordController::class)->group(function (){
-      Route::get('/absensi-karyawan', 'index');
+      Route::get('/absensi-karyawan', 'index')->name('absensi.index');
       Route::post('/absensi-karyawan', 'store');
    });
 
