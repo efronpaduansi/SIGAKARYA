@@ -65,12 +65,14 @@
                             <li class="submenu-item">
                                 <a href="{{ route('absensi.index') }}" class="submenu-link">Input Absensi</a>
                             </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('data.absensi.hariIni') }}" class="submenu-link">Absensi Hari ini</a>
-                            </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('data.absensi.index') }}" class="submenu-link">Rekap Absensi</a>
-                            </li>
+                            @if (Auth::user()->role === 'admin' )
+                                <li class="submenu-item">
+                                    <a href="{{ route('data.absensi.hariIni') }}" class="submenu-link">Absensi Hari ini</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('data.absensi.index') }}" class="submenu-link">Rekap Absensi</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
