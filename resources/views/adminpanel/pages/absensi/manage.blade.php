@@ -20,8 +20,8 @@
                                 <th>#</th>
                                 <th>Nama Karyawan</th>
                                 <th>Tanggal</th>
-                                <th>Masuk</th>
-                                <th>Pulang</th>
+                                <th>Jam</th>
+                                <th>Keterangan</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
@@ -31,8 +31,8 @@
                                      <td>{{ $loop->iteration }}</td>
                                      <td>{{ $item->karyawan->nama }}</td>
                                      <td>{{ date('d-m-Y', strtotime($item->tanggal)) }}</td>
-                                     <td>{{ date('H:i:s', strtotime($item->masuk)) }}</td>
-                                     <td>{{ date('H:i:s', strtotime($item->pulang)) }}</td>
+                                     <td>{{ date('H:i:s', strtotime($item->created_at)) }}</td>
+                                     <td>{{ $item->keterangan == 1 ? 'Hadir' : 'Tidak Hadir' }}</td>
                                      <td>
                                          <form action="{{ route('absensi.destroy', $item->id) }}" method="POST">
                                              @csrf

@@ -15,6 +15,7 @@ class AbsensiRecordController extends Controller
         $data['karyawan'] = Karyawan::latest('nama')->get();
         $data['record'] = Absensi::where('user_id', auth()->user()->id)
                         ->where('tanggal', date('Y-m-d'))
+                        ->where('keterangan', 1)
                         ->latest()
                         ->first();
 
@@ -22,7 +23,7 @@ class AbsensiRecordController extends Controller
             $data['keterangan'] = 'Anda belum melakukan rekam absensi!';
             $data['recordId'] = null;
         }else{
-            $jamMasuk = $data['record']['masuk'];
+            $jamMasuk = $data['record']['created_at'];
             $data['keterangan'] = 'Anda telah melakukan check-in pada: ' . $jamMasuk;
             $data['recordId'] = $data['record']['id'];
         }
