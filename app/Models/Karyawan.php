@@ -37,6 +37,9 @@ class Karyawan extends Model
         'rekening',
         'nama_rekening',
         'alamat',
+        'pendidikan_terakhir',
+        'npwp',
+        'status_pernikahan',
         'kode_jabatan'
     ];
 

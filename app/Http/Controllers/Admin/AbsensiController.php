@@ -11,7 +11,7 @@ class AbsensiController extends Controller
 {
     public function index()
     {
-        $data['absensiRecords'] =  Absensi::latest('masuk')->latest('pulang')->get();
+        $data['absensiRecords'] =  Absensi::latest()->get();
 
         return view('adminpanel.pages.absensi.manage', ['data' => $data]);
     }
