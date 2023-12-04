@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-heading')
-    Rekap Absensi Karyawan
+    Absensi Karyawan Hari ini
 @endsection
 
 @section('content')

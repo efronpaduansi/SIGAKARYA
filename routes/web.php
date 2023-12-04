@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(\App\Http\Controllers\Admin\AbsensiController::class)->group(function (){
         Route::get('/absensi', 'index')->name('data.absensi.index');
+        Route::get('/absensi/today', 'absensiHariIni')->name('data.absensi.hariIni');
         Route::delete('/absensi/{id}', 'destroy')->name('absensi.destroy');
     });
 

@@ -55,7 +55,7 @@
                 </li>
             @endif
 
-            <li class="menu-item has-sub  {{ request()->is('absensi-karyawan') || request()->is('absensi') ? 'active' : '' }}">
+            <li class="menu-item has-sub  {{ request()->is('absensi-karyawan') || request()->is('absensi') || request()->is('absensi/*') ? 'active' : '' }}">
                 <a href="#" class="menu-link">
                         <span><i class="fa fa-clock"></i>Absensi</span>
                 </a>
@@ -66,7 +66,7 @@
                                 <a href="{{ route('absensi.index') }}" class="submenu-link">Input Absensi</a>
                             </li>
                             <li class="submenu-item">
-                                <a href="form-layout.html" class="submenu-link">Absensi Hari ini</a>
+                                <a href="{{ route('data.absensi.hariIni') }}" class="submenu-link">Absensi Hari ini</a>
                             </li>
                             <li class="submenu-item">
                                 <a href="{{ route('data.absensi.index') }}" class="submenu-link">Rekap Absensi</a>

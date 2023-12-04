@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Absensi;
 use Illuminate\Http\Request;
 use Alert;
+use Carbon\Carbon;
 
 class AbsensiController extends Controller
 {
@@ -14,6 +15,14 @@ class AbsensiController extends Controller
         $data['absensiRecords'] =  Absensi::latest()->get();
 
         return view('adminpanel.pages.absensi.manage', ['data' => $data]);
+    }
+
+    public function absensiHariIni()
+    {
+        $hariIni = date('Y-m-d');
+        $data['absensiRecords'] = Absensi::where('tanggal', $hariIni)->get();
+
+        return view('adminpanel.pages.absensi.today', ['data'=> $data]);
     }
 
     public function destroy($id)
