@@ -12,7 +12,15 @@ class AbsensiController extends Controller
 {
     public function index()
     {
+        $startDate  = $_GET['startDate'];
+        $endDate    = $_GET['endDate'];
+
         $data['absensiRecords'] =  Absensi::latest()->get();
+
+        if(!empty($startDate) && !empty($endDate)){
+            $data['absensiRecords'] =  Absensi::whereBetween('tanggal', [$startDate, $endDate])
+                                        ->latest()->get();
+        }
 
         return view('adminpanel.pages.absensi.manage', ['data' => $data]);
     }
