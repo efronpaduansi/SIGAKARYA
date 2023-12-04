@@ -138,6 +138,9 @@ class KaryawanController extends Controller
             'rekening' => trim(htmlspecialchars($request->editRekening)),
             'nama_rekening' => trim(htmlspecialchars($request->editNamaRekening)),
             'alamat' => trim(htmlspecialchars($request->editAlamat)),
+            'pendidikan_terakhir' => trim(htmlspecialchars($request->editPendidikan)),
+            'npwp' => trim(htmlspecialchars($request->editNPWP)),
+            'status_pernikahan' => trim(htmlspecialchars($request->editStatusPernikahan)),
             'kode_jabatan' => trim(htmlspecialchars($request->editJabatan)),
         ];
 
