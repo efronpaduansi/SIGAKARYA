@@ -78,6 +78,31 @@
                 </div>
             </li>
 
+            @if (Auth::user()->role === 'admin' || Auth::user()->role === 'bendahara')
+                <li class="menu-item has-sub  {{ request()->is('users') ? 'active' : '' }}">
+                    <a href="#" class="menu-link">
+                        <span><i class="fas fa-money-check-alt"></i>
+                            Penggajian</span>
+                    </a>
+                    <div class="submenu">
+                        <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+                        <div class="submenu-group-wrapper">
+                            <ul class="submenu-group">
+                                <li class="submenu-item">
+                                    <a href="{{ route('penggajian.create') }}" class="submenu-link">Input Gaji</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('users.index') }}" class="submenu-link">Cetak Gaji</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('users.index') }}" class="submenu-link">Rekap Gaji</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            @endif
+
             <li class="menu-item {{ request()->is('timesheet/*') ? 'active' : '' }}">
                 <a href="{{ url('/timesheet') }}" class="menu-link">
                     <span><i class="fas fa-business-time"></i> Leave & Cuti</span>

@@ -58,6 +58,10 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/absensi/{id}', 'destroy')->name('absensi.destroy');
     });
 
+    Route::controller(\App\Http\Controllers\Admin\PenggajianController::class)->group(function (){
+        Route::get('/penggajian/create','create')->name('penggajian.create');
+    });
+
     Route::controller(UserController::class)->group(function (){
         Route::get('/users', 'index')->name('users.index');
         Route::post('/users', 'store')->name('users.store');
