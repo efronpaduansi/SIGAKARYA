@@ -13,6 +13,7 @@ class Penggajian extends Model
     protected $table = 'penggajian';
 
     protected $fillable = [
+        'bulan',
         'nik_karyawan',
         'gaji_awal',
         'tunjangan_jabatan',
