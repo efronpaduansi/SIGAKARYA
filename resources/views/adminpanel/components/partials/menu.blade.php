@@ -95,7 +95,7 @@
                                     <a href="{{ route('users.index') }}" class="submenu-link">Cetak Gaji</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="{{ route('users.index') }}" class="submenu-link">Rekap Gaji</a>
+                                    <a href="{{ route('penggajian.index') }}" class="submenu-link">Rekap Gaji</a>
                                 </li>
                             </ul>
                         </div>

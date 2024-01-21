@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::controller(\App\Http\Controllers\Admin\PenggajianController::class)->group(function (){
+        Route::get('/penggajian','create')->name('penggajian.index');
         Route::get('/penggajian/create','create')->name('penggajian.create');
         Route::get('/penggajian/create/form', 'formGaji')->name('penggajian.formGaji');
         Route::post('/penggajian/create/form', 'store')->name('penggajian.store');
