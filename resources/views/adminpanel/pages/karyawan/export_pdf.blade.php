@@ -98,6 +98,10 @@
                                 <td>{{ $karyawan->telepon }}</td>
                             </tr>
                             <tr>
+                                <th>Email</th>
+                                <td>{{ $karyawan->email }}</td>
+                            </tr>
+                            <tr>
                                 <th>Alamat Lengkap</th>
                                 <td>{{ $karyawan->alamat }}</td>
                             </tr>

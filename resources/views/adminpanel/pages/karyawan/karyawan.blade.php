@@ -56,6 +56,11 @@
                                     <td>{{ $karyawan->telepon }}</td>
                                 </tr>
                                 <tr>
+                                    <th>Email</th>
+                                    <td>:</td>
+                                    <td>{{ $karyawan->email }}</td>
+                                </tr>
+                                <tr>
                                     <th>Alamat Lengkap</th>
                                     <td>:</td>
                                     <td>{{ $karyawan->alamat }}</td>
