@@ -28,8 +28,16 @@ class PinjamanController extends Controller
 
     public function index()
     {
-        $data['pinjaman'] = Pinjaman::latest()->get();
+        if(auth()->user()->role == 'karyawan'){
+            $userEmail = auth()->user()->email;
 
+            //Ambil nik karyawan
+            $karyawan = Karyawan::query()->where('email', $userEmail)->first();
+            
+            $data['pinjaman'] = Pinjaman::query()->where('nik_karyawan', $karyawan->nik)->get();
+        }else{
+            $data['pinjaman'] = Pinjaman::latest()->get();
+        }
         return view('adminpanel.pages.pinjaman.manage', ['data' => $data]);
     }
 

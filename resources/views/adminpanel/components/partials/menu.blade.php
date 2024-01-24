@@ -69,10 +69,10 @@
                                 <li class="submenu-item">
                                     <a href="{{ route('data.absensi.hariIni') }}" class="submenu-link">Absensi Hari ini</a>
                                 </li>
-                                <li class="submenu-item">
-                                    <a href="{{ route('data.absensi.index') }}" class="submenu-link">Rekap Absensi</a>
-                                </li>
                             @endif
+                            <li class="submenu-item">
+                                <a href="{{ route('data.absensi.index') }}" class="submenu-link">Rekap Absensi</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

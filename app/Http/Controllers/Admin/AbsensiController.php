@@ -2,24 +2,40 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Absensi;
-use Illuminate\Http\Request;
 use Alert;
 use Carbon\Carbon;
+use App\Models\Absensi;
+use App\Models\Karyawan;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AbsensiController extends Controller
 {
     public function index()
     {
-        $startDate  = $_GET['startDate'];
-        $endDate    = $_GET['endDate'];
+        //Cek user role akses
+        if(auth()->user()->role == 'karyawan'){
+            $userEmail = auth()->user()->email;
+            //Ambil nik karyawan
+            $karyawan = Karyawan::query()->where('email', $userEmail)->first();
 
-        $data['absensiRecords'] =  Absensi::latest()->get();
-
-        if(!empty($startDate) && !empty($endDate)){
-            $data['absensiRecords'] =  Absensi::whereBetween('tanggal', [$startDate, $endDate])
-                                        ->latest()->get();
+            if(isset($_GET['startDate']) || isset($_GET['endDate'])){
+                $startDate  = $_GET['startDate'];
+                $endDate    = $_GET['endDate'];
+                $data['absensiRecords'] =  Absensi::whereBetween('tanggal', [$startDate, $endDate])
+                                            ->where('nik_karyawan', $karyawan->nik)
+                                            ->latest()->get();
+            }else{
+                $data['absensiRecords'] =  Absensi::where('nik_karyawan', $karyawan->nik)->latest()->get();
+            }
+        }else{
+            if(isset($_GET['startDate']) || isset($_GET['endDate'])){
+                $startDate  = $_GET['startDate'];
+                $endDate    = $_GET['endDate'];
+                $data['absensiRecords'] =  Absensi::whereBetween('tanggal', [$startDate, $endDate])
+                                            ->latest()->get();
+            }
+            $data['absensiRecords'] =  Absensi::latest()->get();
         }
 
         return view('adminpanel.pages.absensi.manage', ['data' => $data]);
