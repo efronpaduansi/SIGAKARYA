@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use PDF;
+use Alert;
+use App\Models\User;
 use App\Models\Jabatan;
 use App\Models\Karyawan;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Alert;
 use Illuminate\Support\Facades\Hash;
-use PDF;
+use Illuminate\Support\Facades\Validator;
 
 class KaryawanController extends Controller
 {
@@ -152,6 +153,24 @@ class KaryawanController extends Controller
 
         return redirect('/karyawan')->withToastSuccess('Update berhasil!');
 
+    }
+
+    /* Change profile image */
+    public function profileChange(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'img' => 'image|mimes:jpeg,png,jpg,gif|max:1024',
+        ]);
+
+        $karyawan = Karyawan::query()->where('nik', $request->nik)->first();
+
+        $imageName = time().'.'.$request->img->extension();  
+        $request->img->move(public_path('uploads/profiles'), $imageName);
+
+        $karyawan->picture_path = $imageName;
+        $karyawan->save();
+        
+        return redirect('/karyawan')->withToastSuccess('Update berhasil!');
     }
 
     public function destroy($nik)

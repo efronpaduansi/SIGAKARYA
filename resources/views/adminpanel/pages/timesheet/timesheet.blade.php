@@ -22,6 +22,7 @@
                                 <th>Subjek</th>
                                 <th>Jumlah Hari</th>
                                 <th>Keterangan</th>
+                                <th>Status</th>
                                 <th>Opsi</th>
                             </tr>
                         </thead>
@@ -33,6 +34,7 @@
                                     <td>{{ $item->subjek }}</td>
                                     <td>{{ $item->jumlah_hari }}</td>
                                     <td>{{ $item->keterangan }}</td>
+                                    <td>{{ $item->status }}</td>
                                     <td>
                                         <a href="{{ route('timesheet.show', $item->id) }}" class="btn btn-sm btn-info">Detail</a>
                                     </td>

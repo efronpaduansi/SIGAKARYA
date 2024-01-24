@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/karyawan/edit/{nik}', 'edit')->name('karyawan.edit');
         Route::put('/karyawan/edit/{nik}', 'update')->name('karyawan.update');
         Route::delete('/karyawan/{nik}', 'destroy')->name('karyawan.destroy');
+        Route::post('/karyawan/profile-change', 'profileChange')->name('karyawan.profileChange');
     });
 
     Route::controller(JabatanController::class)->group(function(){

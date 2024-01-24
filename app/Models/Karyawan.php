@@ -40,7 +40,8 @@ class Karyawan extends Model
         'pendidikan_terakhir',
         'npwp',
         'status_pernikahan',
-        'kode_jabatan'
+        'kode_jabatan',
+        'picture_path'
     ];
 
     public function jabatan()
