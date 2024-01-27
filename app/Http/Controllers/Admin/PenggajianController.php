@@ -62,4 +62,28 @@ class PenggajianController extends Controller
         return back()->withToastSuccess('Simpan berhasil!');
     }
 
+    /*Rekap Gaji Karyawan */
+    public function cetakGaji(Request $request)
+    {
+        if(!isset($_GET['nik_karyawan']) || !isset($_GET['bulan'])){
+            $data['karyawans'] = Karyawan::oldest('nama')->get();
+            return view('adminpanel.pages.penggajian.form_select', ['data' => $data]);
+        }else{
+            $data = [
+                'nik' =>  $request->nik_karyawan,
+                'bulan' => $request->bulan
+            ];
+           $this->rekapGajiAction($data);
+        }
+
+    }
+
+    private function rekapGajiAction($data)
+    {
+        // $data['penggajian'] = Penggajian::query()->where('nik_karyawan', $data['nik'])
+        //                     ->where('bulan', $data['bulan'])
+        //                     ->first();
+        return view('adminpanel.pages.penggajian.rekap_select');
+    }
+
 }
