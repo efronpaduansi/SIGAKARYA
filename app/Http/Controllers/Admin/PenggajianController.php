@@ -73,17 +73,19 @@ class PenggajianController extends Controller
                 'nik' =>  $request->nik_karyawan,
                 'bulan' => $request->bulan
             ];
-           $this->rekapGajiAction($data);
+
+         $dataGaji = Penggajian::query()
+                                ->where('nik_karyawan', $data['nik'])
+                                ->where('bulan', $data['bulan'])->first();
+         if($dataGaji){
+            $dataGaji = $dataGaji;
+         }else{
+            return view('adminpanel.pages.penggajian.data_null');
+         }
+         return view('adminpanel.pages.penggajian.cetak_gaji', compact('dataGaji'));
         }
 
     }
 
-    private function rekapGajiAction($data)
-    {
-        // $data['penggajian'] = Penggajian::query()->where('nik_karyawan', $data['nik'])
-        //                     ->where('bulan', $data['bulan'])
-        //                     ->first();
-        return view('adminpanel.pages.penggajian.rekap_select');
-    }
 
 }
