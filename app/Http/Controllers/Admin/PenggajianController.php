@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Karyawan;
 use App\Models\Penggajian;
-
+use PDF;
 
 class PenggajianController extends Controller
 {
@@ -87,5 +87,15 @@ class PenggajianController extends Controller
 
     }
 
+    //Cetak PDF by NIK
+    public function cetakPDF(Request $request, $nik)
+    {
+        $data = Penggajian::query()
+                    ->where('nik_karyawan', $nik)
+                    ->where('bulan', $request->bulan)
+                    ->first();
+        $pdf = PDF::loadview('adminpanel.pages.penggajian.export_pdf', ['data' => $data]);
+        return $pdf->stream();
+    }
 
 }

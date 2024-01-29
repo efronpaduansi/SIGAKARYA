@@ -14,9 +14,12 @@
             <div class="card">
                 <div class="card-header">
                     <div class="justify-content-end">
-                        {{-- <a href="{{ route('karyawan.exportPdf', $karyawan->nik) }}" class="btn btn-sm btn-secondary mb-3"
-                            target="_blank"><i class="far fa-file-pdf"></i> Export
-                            PDF</a> --}}
+                        <form action="{{ route('penggajian.cetakPDF', $dataGaji->karyawan->nik) }}" method="get">
+                            @csrf
+                            <input type="hidden" name="bulan" value="{{ $dataGaji->bulan }}">
+                            <button type="submit" class="btn btn-secondary mb-3"><i class="far fa-file-pdf"></i> Export
+                                PDF</button>
+                        </form>
                     </div>
                 </div>
                 <div class="card-body">
