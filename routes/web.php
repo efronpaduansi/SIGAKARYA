@@ -66,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/penggajian/create/form', 'store')->name('penggajian.store');
         Route::get('/penggajian/cetak', 'cetakGaji')->name('penggajian.cetakGaji');
         Route::get('/penggajian/cetak-pdf/{nik}', 'cetakPDF')->name('penggajian.cetakPDF');
+        Route::get('penggajian/rekap-gaji', 'rekapGaji')->name('penggajian.rekap');
     });
 
     Route::controller(UserController::class)->group(function (){

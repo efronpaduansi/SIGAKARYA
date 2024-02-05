@@ -98,4 +98,10 @@ class PenggajianController extends Controller
         return $pdf->stream();
     }
 
+    //Rekap gaji semua karyawan
+    public function rekapGaji(){
+        $all_data = Penggajian::latest()->get();
+        return view('adminpanel.pages.penggajian.all_data', compact('all_data'));
+    }
+
 }

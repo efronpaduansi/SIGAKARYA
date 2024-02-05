@@ -28,6 +28,30 @@ class Penggajian extends Model
         'gaji_netto'
     ];
 
+    // Accessor awal
+    public function getGajiAwalAttribute($value){
+        $rupiah = "Rp. " ;
+        return $rupiah . number_format($value, 0, '.', '.');
+    }
+
+    // Accessor tunjangan_jabatan
+    public function getTunjanganJabatanAttribute($value){
+        $rupiah = "Rp. " ;
+        return $rupiah . number_format($value, 0, '.', '.');
+    }
+
+    //Accessor total tunjangan
+    public function getTotalTunjanganAttribute($value){
+        $rupiah = "Rp. ";
+        return $rupiah . number_format($value, 0, '.', '.');
+    }
+
+     //Accessor potongan BPJS
+     public function getPotonganBpjsAttribute($value){
+        $rupiah = "Rp. ";
+        return $rupiah . number_format($value, 0, '.', '.');
+    }
+
     public function karyawan()
     {
         return $this->belongsTo(Karyawan::class, 'nik_karyawan', 'nik');

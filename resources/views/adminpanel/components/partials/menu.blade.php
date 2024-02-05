@@ -79,7 +79,7 @@
             </li>
 
             @if (Auth::user()->role === 'admin' || Auth::user()->role === 'bendahara')
-                <li class="menu-item has-sub  {{ request()->is('users') ? 'active' : '' }}">
+                <li class="menu-item has-sub  {{ request()->is('penggajian/*') ? 'active' : '' }}">
                     <a href="#" class="menu-link">
                         <span><i class="fas fa-money-check-alt"></i>
                             Penggajian</span>
@@ -95,7 +95,7 @@
                                     <a href="{{ route('penggajian.cetakGaji') }}" class="submenu-link">Cetak Gaji</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="" class="submenu-link">Rekap Gaji</a>
+                                    <a href="{{ route('penggajian.rekap') }}" class="submenu-link">Rekap Gaji</a>
                                 </li>
                             </ul>
                         </div>
