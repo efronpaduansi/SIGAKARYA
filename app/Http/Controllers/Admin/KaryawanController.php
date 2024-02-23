@@ -38,6 +38,15 @@ class KaryawanController extends Controller
             return redirect('/karyawan')->withToastError('NIK harus unik!');
         }
 
+        //Validation image
+        $validator = Validator::make($request->all(), [
+            'addImage' => 'image|mimes:jpeg,png,jpg,gif|max:1024',
+        ]);
+
+        //Save image
+        $imageName = time().'.'.$request->addImage->extension();
+        $request->addImage->move(public_path('uploads/profiles'), $imageName);
+
         $data = [
             'nik' => trim(htmlspecialchars($request->addNIK)),
             'nama' => trim(htmlspecialchars($request->addNama)),
@@ -55,6 +64,7 @@ class KaryawanController extends Controller
             'npwp' => trim(htmlspecialchars($request->addNPWP)),
             'status_pernikahan' => trim(htmlspecialchars($request->addStatusPernikahan)),
             'kode_jabatan' => trim(htmlspecialchars($request->addJabatan)),
+            'picture_path' => $imageName,
         ];
 
         $storeKaryawan = Karyawan::create($data);
@@ -68,6 +78,7 @@ class KaryawanController extends Controller
             'email' => trim($request->addEmail),
             'password' => Hash::make('password'),
             'role' => 'karyawan',
+            'profile_img' => $imageName,
         ]);
 
         return redirect('/karyawan')->withToastSuccess('Simpan sukses!');
@@ -164,12 +175,12 @@ class KaryawanController extends Controller
 
         $karyawan = Karyawan::query()->where('nik', $request->nik)->first();
 
-        $imageName = time().'.'.$request->img->extension();  
+        $imageName = time().'.'.$request->img->extension();
         $request->img->move(public_path('uploads/profiles'), $imageName);
 
         $karyawan->picture_path = $imageName;
         $karyawan->save();
-        
+
         return redirect('/karyawan')->withToastSuccess('Update berhasil!');
     }
 

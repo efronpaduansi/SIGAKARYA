@@ -41,7 +41,7 @@ class Karyawan extends Model
         'npwp',
         'status_pernikahan',
         'kode_jabatan',
-        'picture_path'
+        'picture_path',
     ];
 
     public function jabatan()

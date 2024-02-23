@@ -98,6 +98,7 @@ Route::middleware(['auth'])->group(function (){
 Route::middleware(['auth'])->group(function (){
    Route::controller(\App\Http\Controllers\ProfileController::class)->group(function (){
      Route::get('/profile', 'index')->name('profile.index');
+     Route::put('/profile/change-image/{id}', 'profileImgUpdate')->name('profile.profileImgUpdate');
      Route::put('/profile/{id}', 'passwordUpdate')->name('profile.passwordUpdate');
    });
 });

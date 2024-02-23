@@ -16,11 +16,19 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card" style="width: 100%;">
-                                <img src="{{ asset('adminpanel/assets/compiled/jpg/2.jpg') }}" class="card-img-top" alt="profile-image">
+                                @if(Auth::user()->profile_img == '')
+                                    <img src="{{ asset('adminpanel/assets/static/images/faces/1.jpg') }}" class="card-img-top" alt="profile-image">
+                                @else
+                                    <img src="{{ asset('uploads/profiles/' . Auth::user()->profile_img) }}" class="card-img-top" alt="profile-image">
+                                @endif
                                 <div class="card-body text-center">
                                     <h5 class="card-title">{{ $profile->name }}</h5>
                                     <p class="card-text">{{ $profile->email }}</p>
-                                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passModal"><i class="fas fa-lock"></i> Ubah Kata Sandi</a>
+                                    <div class="d-flex">
+                                        <a href="#" class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#imageModal"><i class="fas fa-image"></i> Ubah Foto Profil</a>
+                                        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#passModal"><i class="fas fa-lock"></i> Ubah Kata Sandi</a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -56,5 +64,6 @@
             </div>
         </div>
     </div>
+    @include('adminpanel.pages.profile.image_modal')
     @include('adminpanel.pages.profile.pas_modal')
 @endsection

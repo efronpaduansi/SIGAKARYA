@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="card shadow">
                 <div class="card-body">
-                    <form action="{{ route('karyawan.store') }}" method="POST" data-parsley-validate>
+                    <form action="{{ route('karyawan.store') }}" method="POST" data-parsley-validate enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <div class="row mb-2">
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="row mb-2">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="addJK">Jenis Kelamin <small class="text-danger">*</small></label>
                                     <select name="addJK" id="addJK" class="form-select" required>
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="addAgama">Agama <small class="text-danger">*</small></label>
                                     <select name="addAgama" id="addAgama" class="form-select" required>
@@ -76,6 +76,14 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="addImage" class="form-label">Foto Profil <small class="text-danger">*</small></label>
+                                    <input type="file" name="addImage" id="addImage" class="form-control" accept=".png, .jpeg, .jpg" required>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="row mb-2">
