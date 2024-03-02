@@ -33,10 +33,15 @@ class Karyawan extends Model
         'tahun_masuk',
         'agama',
         'telepon',
+        'email',
         'rekening',
         'nama_rekening',
         'alamat',
-        'kode_jabatan'
+        'pendidikan_terakhir',
+        'npwp',
+        'status_pernikahan',
+        'kode_jabatan',
+        'picture_path',
     ];
 
     public function jabatan()

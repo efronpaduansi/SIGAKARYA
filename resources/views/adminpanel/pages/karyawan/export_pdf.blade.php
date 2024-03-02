@@ -98,8 +98,24 @@
                                 <td>{{ $karyawan->telepon }}</td>
                             </tr>
                             <tr>
+                                <th>Email</th>
+                                <td>{{ $karyawan->email }}</td>
+                            </tr>
+                            <tr>
                                 <th>Alamat Lengkap</th>
                                 <td>{{ $karyawan->alamat }}</td>
+                            </tr>
+                            <tr>
+                                <th>Pendidikan Terakhir</th>
+                                <td>{{ $karyawan->pendidikan_terakhir }}</td>
+                            </tr>
+                            <tr>
+                                <th>NPWP</th>
+                                <td>{{ $karyawan->npwp }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status Pernikahan</th>
+                                <td>{{ $karyawan->status_pernikahan }}</td>
                             </tr>
                             <tr>
                                 <th>No. Rekening</th>

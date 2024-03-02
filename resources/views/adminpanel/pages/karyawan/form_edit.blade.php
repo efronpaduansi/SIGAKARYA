@@ -80,7 +80,7 @@
 
                         <div class="row mb-2">
                             <strong class="mb-2">Informasi Kontak & Jabatan</strong>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="editTelepon">No. Telepon <small class="text-danger">*</small></label>
                                     <input type="text" name="editTelepon" id="editTelepon" class="form-control"
@@ -88,7 +88,13 @@
                                         data-parsley-maxlength="15">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="editEmail">Email <small class="text-danger">*</small></label>
+                                    <input type="email" name="editEmail" id="editEmail" class="form-control" value="{{ $karyawan->email }}" placeholder="Masukan Email Aktif" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="editRekening">No Rekening <small class="text-danger">*</small></label>
                                     <input type="text" name="editRekening" id="editRekening" class="form-control"
@@ -96,7 +102,7 @@
                                         data-parsley-maxlength="20">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="editNamaRekening">Nama Pemilik Rekening <small
                                             class="text-danger">*</small></label>
@@ -105,14 +111,43 @@
                                         value="{{ $karyawan->nama_rekening }}" required>
                                 </div>
                             </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="editPendidikan">Pendidikan Terakhir <small class="text-danger">*</small></label>
+                                    <select name="editPendidikan" id="editPendidikan" class="form-select choices">
+                                        <option value="SD Sederajat">SD Sederajat</option>
+                                        <option value="SMP Sederajat">SMP Sederajat</option>
+                                        <option value="SMA Sederajat">SMA Sederajat</option>
+                                        <option value="Diploma III">Diploma III</option>
+                                        <option value="S1">S1</option>
+                                        <option value="S2">S2</option>
+                                        <option value="S3">S3</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="editNPWP">NPWP <small class="text-danger">*</small></label>
+                                    <input type="number" name="editNPWP" id="NPWP" class="form-control" value="{{ $karyawan->npwp }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="editStatusPernikahan">Status Perkawinan <small class="text-danger">*</small></label>
+                                    <select name="editStatusPernikahan" id="editStatusPernikahan" class="form-select choices">
+                                        <option value="Kawin">Kawin</option>
+                                        <option value="Belum Kawin">Belum Kawin</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="editTahunMasuk">Tahun Masuk <small class="text-danger">*</small></label>
-                                    <select name="editTahunMasuk" id="editTahunMasuk" class="form-select choices">
-                                        @for ($tahun = date('Y'); $tahun >= 2000; $tahun--)
-                                            <option value="{{ $tahun }}">{{ $tahun }}</option>
-                                        @endfor
-                                    </select>
+                                    <input type="date" name="editTahunMasuk" id="editTahunMasuk" class="form-control" value="{{ $karyawan->tahun_masuk }}">
                                 </div>
                             </div>
 

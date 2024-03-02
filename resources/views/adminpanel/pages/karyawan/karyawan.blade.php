@@ -56,9 +56,29 @@
                                     <td>{{ $karyawan->telepon }}</td>
                                 </tr>
                                 <tr>
+                                    <th>Email</th>
+                                    <td>:</td>
+                                    <td>{{ $karyawan->email }}</td>
+                                </tr>
+                                <tr>
                                     <th>Alamat Lengkap</th>
                                     <td>:</td>
                                     <td>{{ $karyawan->alamat }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Pendidikan Terakhir</th>
+                                    <td>:</td>
+                                    <td>{{ $karyawan->pendidikan_terakhir }}</td>
+                                </tr>
+                                <tr>
+                                    <th>NPWP</th>
+                                    <td>:</td>
+                                    <td>{{ $karyawan->npwp }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status Pernikahan</th>
+                                    <td>:</td>
+                                    <td>{{ $karyawan->status_pernikahan }}</td>
                                 </tr>
                                 <tr>
                                     <th>No. Rekening</th>

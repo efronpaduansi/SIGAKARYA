@@ -10,6 +10,15 @@ Use Alert;
 class JabatanController extends Controller
 {
 
+    private function generateJabatanNumber()
+    {
+        $lastKode = Jabatan::max('kode') ?? 0;
+        $nextId = $lastKode + 0001;
+
+        return str_pad($nextId, 4, '0', STR_PAD_LEFT);
+    }
+
+
     public function index()
     {
         $data['jabatan'] = Jabatan::query()
@@ -29,7 +38,7 @@ class JabatanController extends Controller
         }
 
         $data = [
-            'kode' => trim(htmlspecialchars($request->addKode)),
+            'kode' => $this->generateJabatanNumber(),
             'nama' => trim(htmlspecialchars($request->addNama)),
             'gaji_pokok' => trim(htmlspecialchars(preg_replace('/[Rp.,]/', '', $request->addGapok))),
             'uang_makan' => trim(htmlspecialchars(preg_replace('/[Rp.,]/', '', $request->addUangMakan))),

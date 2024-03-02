@@ -11,7 +11,11 @@
                     class="user-dropdown d-flex align-items-center dropend dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <div class="avatar avatar-md2">
-                        <img src="{{ asset('adminpanel/assets/compiled/jpg/1.jpg') }}" alt="Avatar" />
+                        @if(Auth::user()->profile_img == '')
+                            <img src="{{ asset('adminpanel/assets/static/images/faces/1.jpg') }}" alt="Avatar">
+                        @else
+                            <img src="{{ asset('uploads/profiles/' . Auth::user()->profile_img) }}" alt="Avatar" />
+                        @endif
                     </div>
                     <div class="text">
                         <h6 class="user-dropdown-name text-capitalize">{{ Auth::user()->name }}</h6>
@@ -21,8 +25,8 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profil</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Pengaturan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile.index') }}"><i class="bi bi-person"></i> Profil</a></li>
+{{--                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Pengaturan</a></li>--}}
                     <li>
                         <hr class="dropdown-divider" />
                     </li>

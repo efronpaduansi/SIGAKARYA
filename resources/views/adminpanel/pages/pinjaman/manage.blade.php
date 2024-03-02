@@ -13,8 +13,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ url('/pinjaman/tambah') }}" class="btn btn-primary mb-5"><i class="fas fa-plus"></i> Ajukan
+                        @if(Auth::user()->role === 'karyawan')
+                            <a href="{{ url('/pinjaman/tambah') }}" class="btn btn-primary mb-5"><i class="fas fa-plus"></i> Ajukan
                             Pinjaman</a>
+                        @endif
                         <div class="table-responsive">
                             <table class="table table-striped table-hover" id="mytable">
                                 <thead>
@@ -27,7 +29,9 @@
                                         <th>Tenor</th>
                                         <th>Angsuran</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
+                                        @if(Auth::user()->role != 'karyawan')
+                                            <th>Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
 
@@ -54,7 +58,7 @@
                                                         type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         {{ $item->status }}
                                                     </button>
-                                                    @if ($item->status === 'Menunggu Konfirmasi')
+                                                    @if ($item->status === 'Menunggu Konfirmasi' &&  Auth::user()->role != 'karyawan')
                                                         <ul class="dropdown-menu">
                                                             <li><a class="dropdown-item text-primary"
                                                                     href="{{ route('pinjaman.setujui', $item->no_pinjaman) }}"><i
@@ -70,6 +74,7 @@
                                                     @endif
                                                 </div>
                                             </td>
+                                            @if(Auth::user()->role != 'karyawan')
                                             <td>
                                                 <form action="{{ route('pinjaman.destroy', $item->no_pinjaman) }}"
                                                     method="POST">
@@ -80,6 +85,7 @@
                                                             class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>

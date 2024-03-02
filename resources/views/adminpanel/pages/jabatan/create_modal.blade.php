@@ -13,14 +13,7 @@
                     @method('POST')
 
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="addKode">Kode <small class="text-danger">*</small></label>
-                                <input type="text" name="addKode" id="addKode" class="form-control"
-                                    placeholder="Masukan Kode" required data-parsley-maxlength="25">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="addNama">Nama Jabatan <small class="text-danger">*</small></label>
                                 <input type="text" name="addNama" id="addNama" class="form-control"

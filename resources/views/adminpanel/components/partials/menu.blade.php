@@ -6,6 +6,7 @@
                     <span><i class="bi bi-grid-fill"></i> Dashboard</span>
                 </a>
             </li>
+
             <li
                 class="menu-item has-sub {{ request()->is('karyawan') || request()->is('karyawan/*') || request()->is('jabatan') || request()->is('pinjaman') ? 'active' : '' }}">
                 <a href="#" class="menu-link">
@@ -15,72 +16,99 @@
                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
                     <div class="submenu-group-wrapper">
                         <ul class="submenu-group">
-                            <li class="submenu-item">
-                                <a href="{{ route('karyawan.index') }}" class="submenu-link">Data Karyawan</a>
-                            </li>
+                            @if (Auth::user()->role === 'admin' || Auth::user()->role === 'bendahara')
+                                <li class="submenu-item">
+                                    <a href="{{ route('jabatan.index') }}" class="submenu-link">Data Jabatan</a>
+                                </li>
 
-                            <li class="submenu-item">
-                                <a href="{{ route('jabatan.index') }}" class="submenu-link">Data Jabatan</a>
-                            </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('karyawan.index') }}" class="submenu-link">Data Karyawan</a>
+                                </li>
+
+                            @endif
 
                             <li class="submenu-item">
                                 <a href="{{ route('pinjaman.index') }}" class="submenu-link">Data Pinjaman</a>
                             </li>
 
-                            <li class="submenu-item">
-                                <a href="component-breadcrumb.html" class="submenu-link">Data Absensi</a>
-                            </li>
-
                         </ul>
                     </div>
                 </div>
             </li>
 
+            @if (Auth::user()->role === 'admin' || Auth::user()->role === 'bendahara')
+                <li class="menu-item has-sub  {{ request()->is('users') ? 'active' : '' }}">
+                    <a href="#" class="menu-link">
+                        <span><i class="bi bi-file-earmark-medical-fill"></i>
+                            File Aksi</span>
+                    </a>
+                    <div class="submenu">
+                        <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+                        <div class="submenu-group-wrapper">
+                            <ul class="submenu-group">
+                                <li class="submenu-item">
+                                    <a href="{{ route('users.index') }}" class="submenu-link">User Manajemen</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            @endif
 
-            <li class="menu-item has-sub">
+            <li class="menu-item has-sub  {{ request()->is('absensi-karyawan') || request()->is('absensi') || request()->is('absensi/*') ? 'active' : '' }}">
                 <a href="#" class="menu-link">
-                    <span><i class="bi bi-file-earmark-medical-fill"></i>
-                        File Aksi</span>
+                        <span><i class="fa fa-clock"></i>Absensi</span>
                 </a>
                 <div class="submenu">
-                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
                     <div class="submenu-group-wrapper">
                         <ul class="submenu-group">
                             <li class="submenu-item">
-                                <a href="form-layout.html" class="submenu-link">Tambah User</a>
+                                <a href="{{ route('absensi.index') }}" class="submenu-link">Input Absensi</a>
                             </li>
+                            @if (Auth::user()->role === 'admin' )
+                                <li class="submenu-item">
+                                    <a href="{{ route('data.absensi.hariIni') }}" class="submenu-link">Absensi Hari ini</a>
+                                </li>
+                            @endif
                             <li class="submenu-item">
-                                <a href="form-layout.html" class="submenu-link">Reset Password</a>
+                                <a href="{{ route('data.absensi.index') }}" class="submenu-link">Rekap Absensi</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </li>
 
-            <li class="menu-item has-sub">
-                <a href="#" class="menu-link">
-                    <span><i class="bi bi-life-preserver"></i> Support</span>
+            @if (Auth::user()->role === 'admin' || Auth::user()->role === 'bendahara')
+                <li class="menu-item has-sub  {{ request()->is('penggajian/*') ? 'active' : '' }}">
+                    <a href="#" class="menu-link">
+                        <span><i class="fas fa-money-check-alt"></i>
+                            Penggajian</span>
+                    </a>
+                    <div class="submenu">
+                        <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+                        <div class="submenu-group-wrapper">
+                            <ul class="submenu-group">
+                                <li class="submenu-item">
+                                    <a href="{{ route('penggajian.create') }}" class="submenu-link">Input Gaji</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('penggajian.cetakGaji') }}" class="submenu-link">Cetak Gaji</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('penggajian.rekap') }}" class="submenu-link">Rekap Gaji</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            @endif
+
+            <li class="menu-item {{ request()->is('timesheet/*') ? 'active' : '' }}">
+                <a href="{{ url('/timesheet') }}" class="menu-link">
+                    <span><i class="fas fa-business-time"></i> Leave & Cuti</span>
                 </a>
-                <div class="submenu">
-                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                    <div class="submenu-group-wrapper">
-                        <ul class="submenu-group">
-                            <li class="submenu-item">
-                                <a href="https://zuramai.github.io/mazer/docs" class="submenu-link">Documentation</a>
-                            </li>
-
-                            <li class="submenu-item">
-                                <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md"
-                                    class="submenu-link">Contribute</a>
-                            </li>
-
-                            <li class="submenu-item">
-                                <a href="https://github.com/zuramai/mazer#donation" class="submenu-link">Donate</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </li>
+
         </ul>
     </div>
 </nav>

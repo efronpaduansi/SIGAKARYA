@@ -14,9 +14,9 @@ class PinjamanController extends Controller
 
     private function generateRandomNumber()
     {
-        // $randomNumber = Str::random(8); 
+        // $randomNumber = Str::random(8);
         $randomNumber = mt_rand(100000, 999999);
-        
+
         $numberCheck = Pinjaman::where('no_pinjaman', $randomNumber)->first();
 
         if($numberCheck){
@@ -28,8 +28,16 @@ class PinjamanController extends Controller
 
     public function index()
     {
-        $data['pinjaman'] = Pinjaman::latest()->get();
+        if(auth()->user()->role == 'karyawan'){
+            $userEmail = auth()->user()->email;
 
+            //Ambil nik karyawan
+            $karyawan = Karyawan::query()->where('email', $userEmail)->first();
+            
+            $data['pinjaman'] = Pinjaman::query()->where('nik_karyawan', $karyawan->nik)->get();
+        }else{
+            $data['pinjaman'] = Pinjaman::latest()->get();
+        }
         return view('adminpanel.pages.pinjaman.manage', ['data' => $data]);
     }
 
@@ -47,7 +55,7 @@ class PinjamanController extends Controller
         //get data karyawan
         $karyawan = Karyawan::where('nik', trim(htmlspecialchars($request->addNIK)))->first();
 
-        $data = [   
+        $data = [
             'no_pinjaman' => $request->addNo,
             'nik_karyawan' => $karyawan->nik,
             'kode_jabatan' => $karyawan->kode_jabatan,
@@ -69,7 +77,7 @@ class PinjamanController extends Controller
         $jangkaWaktu = $getLatestData->jangka_waktu;
 
         $totalAngsuran = ($jumlah / $jangkaWaktu);
-       
+
         return view('adminpanel.pages.pinjaman.confirm_page', [
             'data' => $getLatestData,
             'angsuran' => $totalAngsuran,
