@@ -35,7 +35,7 @@ class PenggajianController extends Controller
     public function store(Request $request, Penggajian $penggajian)
     {
 
-        $totalTunjangan = ($request->tunjangan_jabatan + $request->tunjangan_makan + $request->tunjangan_makan + $request->tunjangan_transport + $request->tunjangan_bpjs);
+        $totalTunjangan = ($request->tunjangan_jabatan + $request->tunjangan_makan  + $request->tunjangan_transport + $request->tunjangan_bpjs);
 
         $data = [
             'bulan' => $request->bulan,
@@ -77,12 +77,17 @@ class PenggajianController extends Controller
          $dataGaji = Penggajian::query()
                                 ->where('nik_karyawan', $data['nik'])
                                 ->where('bulan', $data['bulan'])->first();
+        //Hitung total gaji diterima
+        $totalGaji = ($dataGaji->gaji_awal + $dataGaji->total_tunjangan);
+        $totalPotongan = ($dataGaji->potongan_bpjs + $dataGaji->pph + $dataGaji->pph_per_thn + $dataGaji->pph_per_bln);
+        $gajiBersih = ($totalGaji - $totalPotongan);
+        $terbilang = terbilang($gajiBersih);
          if($dataGaji){
             $dataGaji = $dataGaji;
          }else{
             return view('adminpanel.pages.penggajian.data_null');
          }
-         return view('adminpanel.pages.penggajian.cetak_gaji', compact('dataGaji'));
+         return view('adminpanel.pages.penggajian.cetak_gaji', compact('dataGaji', 'gajiBersih', 'terbilang'));
         }
 
     }
@@ -94,6 +99,11 @@ class PenggajianController extends Controller
                     ->where('nik_karyawan', $nik)
                     ->where('bulan', $request->bulan)
                     ->first();
+        //Hitung total gaji diterima
+        $totalGaji = ($data->gaji_awal + $data->total_tunjangan);
+        $totalPotongan = ($data->potongan_bpjs + $data->pph + $data->pph_per_thn + $data->pph_per_bln);
+        $data['gajiBersih'] = ($totalGaji - $totalPotongan);
+        $data['terbilang'] = terbilang($data['gajiBersih']);
         $pdf = PDF::loadview('adminpanel.pages.penggajian.export_pdf', ['data' => $data]);
         return $pdf->stream();
     }

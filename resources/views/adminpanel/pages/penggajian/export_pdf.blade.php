@@ -105,6 +105,21 @@
                                 <td>{{ "Rp. " . number_format($data->tunjangan_bpjs, 0, '.', '.') }}</td>
                             </tr>
 
+                            <tr>
+                                <th>PPH per Tahun</th>
+                                <td>{{ "Rp. " . number_format($data->pph_per_thn, 0, '.', '.') }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <hr>
+                    Gaji Diterima
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Terbilang: <span class="fst-italic">({{ $data->terbilang }} Rupiah)</span></th>
+                                <td class="fw-bold">{{ "Rp. " . number_format($data->gajiBersih, 0, '.', '.')  }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

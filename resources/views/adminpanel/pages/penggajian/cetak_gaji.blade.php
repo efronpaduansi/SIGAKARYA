@@ -13,13 +13,15 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="justify-content-end">
+                    <div class="justify-content-start d-flex">
                         <form action="{{ route('penggajian.cetakPDF', $dataGaji->karyawan->nik) }}" method="get">
                             @csrf
                             <input type="hidden" name="bulan" value="{{ $dataGaji->bulan }}">
-                            <button type="submit" class="btn btn-secondary mb-3"><i class="far fa-file-pdf"></i> Export
+                            <button type="submit" class="btn btn-secondary me-3"><i class="far fa-file-pdf"></i> Export
                                 PDF</button>
                         </form>
+                        <a href="{{ route('penggajian.index') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i>
+                            Kembali</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -61,10 +63,28 @@
                                     <td>:</td>
                                     <td>{{ "Rp. " . number_format($dataGaji->tunjangan_bpjs, 0, '.', '.') }}</td>
                                 </tr>
+                                <tr>
+                                    <th>PPH per Tahun</th>
+                                    <td>:</td>
+                                    <td>{{ "Rp. " . number_format($dataGaji->pph_per_thn, 0, '.', '.') }}</td>
+                                </tr>
                             </tbody>
                         </table>
-                        <a href="{{ route('penggajian.index') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i>
-                            Kembali</a>
+                        <hr>
+                        <table class="table table-striped table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Gaji Diterima</th>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Terbilang: <span class="fst-italic">({{ $terbilang }} Rupiah)</span></th>
+                                    <td>:</td>
+                                    <td class="fw-bold">{{ "Rp. " . number_format($gajiBersih, 0, '.', '.')  }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
